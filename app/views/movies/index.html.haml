@@ -25,9 +25,7 @@
         %td= movie.release_date
         %td= link_to "More about #{movie.title}", movie_path(movie)
         
-        
-        
-   %h2 Search for movies' title containing:
   
 = link_to 'Add new movie', new_movie_path
 
+ %label{:for => 'search_terms'} Search movies titles' containing
