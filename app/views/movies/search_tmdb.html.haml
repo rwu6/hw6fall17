@@ -1,5 +1,5 @@
 %h1 Showing search result:
-= form_tag 'add_tmdb',:action=>'add_tmdb',method=>'post' do
+= form_tag movies_path(@movies),method=>'post' do
 -if @movies.empty? 
    %p No matching movies were found on TMDb
 -end
