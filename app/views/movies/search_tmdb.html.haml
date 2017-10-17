@@ -1,5 +1,5 @@
 %h1 Showing search result:
-= form_tag movies_path do
+= form_tag 'add_tmdb',:action=>'add_tmdb',method=>'post' do
 -if @movies.empty? 
    %p No matching movies were found on TMDb
 -else
@@ -12,12 +12,13 @@
        %th Checkbox
        
     %tbody
-     - @movies.each do |movie|
+     - @movies.each do |m|
       %tr
-        %td= movie.title 
-        %td= movie.rating
-        %td= movie.release_date
+        %td= m.title 
+        %td= m.rating
+        %td= m.release_date
         %td= check_box_tag "tmdb_movies[#{movie[:tmdb_id]}]"
+    =submit_tag 'Add select movies', id=>'movies_button'
         
     =link_to "return to movie list", movies_path 
 
