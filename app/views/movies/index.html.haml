@@ -26,8 +26,8 @@
         %td= link_to "More about #{movie.title}", movie_path(movie)
         
   %h2 search for movie titles containing:
-   %label{:for => 'search'} Search 
-  = text_field_tag 'search'
+   %label{:for => 'search_terms'} Search 
+  = text_field_tag 'search_terms'
 
   = submit_tag 'Search_TMDb'
 
