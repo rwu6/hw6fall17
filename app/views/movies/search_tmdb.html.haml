@@ -1,22 +1,15 @@
-%h1 Search Results:
-
-- if @movies.empty?
-  %p No results were found
-
-- @movies.each do |movie|
-  - poster = movie.posters.first
-
-  %h2= movie.name
-
-  = image_tag(poster.url, height: poster.height, width: poster.width, :class => 'poster') if poster
-
-  %ul#details
-    %li
-      %strong Rating:
-      = movie.certification
-    %li
-      %strong Release Date:
-      = movie.released
-    %li
-      %strong Description:
-      = truncate(movie.overview, :length => 250)
+=form_tag movies_path, :method => :post do
+%table#movies
+  %thread
+    %tr
+       %th Movie's Title
+       %th Rating
+       %th Release Date
+       %th Checkbox select
+    %tbody
+       @movies.each do |m|
+       %tr 
+         %td = m[:title]
+         %td = m[:rating]
+         %td = m[:release_date]
+         %td = check_box_tag 'select the movies you like'
