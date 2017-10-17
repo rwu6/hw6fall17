@@ -3,14 +3,21 @@
 -if @movies.empty? 
    %p No matching movies were found on TMDb
 -else
-  = label :movie, :title, 'Title'
-  = text_field :movie, 'title'
-
-  = label :movie, :rating, 'Rating'
-  = select :movie, :rating, ['G','PG','PG-13','R','NC-17']
-
-  = label :movie, :release_date, 'Released On'
-  = date_select :movie, :release_date
-
-  = submit_tag 'Save Changes'
+  %table#movies
+    %thead
+       %tr
+       %th Movie Title
+       %th Rating
+       %th Release Date
+       %th Checkbox
+       
+    %tbody
+     - @movies.each do |movie|
+      %tr
+        %td= movie.title 
+        %td= movie.rating
+        %td= movie.release_date
+        %td= check_box_tag "tmdb_movies[#{movie[:tmdb_id]}]"
+        
+    =link_to "return to movie list", movies_path 
 
